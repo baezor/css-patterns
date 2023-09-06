@@ -1,0 +1,26 @@
+.grid-cards {
+    --gap: 30px;
+    --cols: 4;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: var(--gap);
+    > * {
+        --total-gap: calc(var(--gap) * (var(--cols) - 1));
+		--x-spacing: calc(var(--total-gap) / var(--cols));
+		flex-shrink: 0;
+		flex-grow: 0;
+		flex-basis: 100%;
+		max-width: 100%;
+        @media(min-width: 768px){
+			--md-colum-width: calc(100% / 2 - var(--x-spacing));
+			flex-basis: var(--md-colum-width);
+			max-width: var(--md-colum-width);
+		}
+		@media(min-width: 1024px){
+			--lg-column-width: calc(100% / var(--cols) - var(--x-spacing));
+			flex-basis: var(--lg-column-width);
+			max-width: var(--lg-column-width);
+		}
+    }
+}
